@@ -1,10 +1,10 @@
 #include <fstream>
+#include<iostream>
 #include<vector>
 #include<map>
 #include<set>
 #include<string>
 using namespace std;
-//std::vector<char> term, noterm;
 int main()
 {
     const int MAXN=4000;
@@ -17,7 +17,7 @@ int main()
         char start, f1, f2; fin>>start>>f1>>f2;
         prod[start].push_back({f1, f2});
     }
-    std::set<char> acc[MAXN][MAXN];///acc[i][j] - multimea caracterelor de la care, pornind, se paote obtine subcuvantul dintre i si j
+    std::set<char> acc[MAXN][MAXN];///acc[i][j] - multimea simbolurilor UNICE de la care, pornind, se paote obtine subcuvantul dintre i si j
     int testedWords; fin>>testedWords;
     for(int word=0; word<testedWords; word++){
         std::string s; fin>>s;
@@ -47,7 +47,7 @@ int main()
                 }
             }
         }
-        if(acc[0][n-1].size()>0){///NOTA: am facut presupunerea ca se poate incepe cu oricare neterminal
+        if(acc[0][n-1].find('S')!=acc[0][n-1].end()){///raspunsul la intrebarea magica: e in limbaj <=> s[0-(n-1)] iese din el
             fout<<"ACCEPTA\n";
         }
         else{
